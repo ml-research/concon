@@ -1,13 +1,12 @@
 # ConCon Dataset
 This is repository for the paper: [Where is the Truth? The Risk of Getting Confounded in a Continual World](https://arxiv.org/abs/2402.06434).
 
+The dataset is available on [Zenodo](https://zenodo.org/doi/10.5281/zenodo.10630481).
 
 The code includes the implementation of our proposed dataset ConCon which is continually confounded. 
 The dataset is based on CLEVR which uses [Blender](https://www.blender.org/) for rendering images.
 
 The code for training the models on various schemes is wrtitten in PyTorch.
-
-The dataset is available on [Zenodo](https://zenodo.org/doi/10.5281/zenodo.10630481).
 
 
 ## Generating Images for disjoint and strict cases
