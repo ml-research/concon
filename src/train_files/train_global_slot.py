@@ -15,7 +15,7 @@ import torchvision.transforms as transforms
 
 import wandb
 from utils import *
-from train_files.models.nesy import *
+from model_nesy import *
 torch.set_num_threads(5)
 
 METHODS = ['baseline']

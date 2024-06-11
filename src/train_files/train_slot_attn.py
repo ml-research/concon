@@ -2,6 +2,7 @@ import os
 import argparse
 import random
 import math
+import glob
 
 import numpy as np
 
@@ -14,8 +15,9 @@ import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 
 import wandb
+from model import CNNModel, ResNet, BasicBlock
 from utils import *
-from train_files.models.nesy import *
+from model_nesy import *
 
 METHODS = ['baseline', 'ewc', 'buffer']
 

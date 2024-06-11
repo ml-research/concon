@@ -10,7 +10,7 @@ METHODS=('baseline' 'ewc' 'buffer')
 
 ROOT_DIR=$4
 MODEL=$3
-DATASET_TYPE=$2 #('disjoint' or 'strict')
+DATASET_TYPE=$2
 SEED=$1
 
 TRAIN_PATH_TASK0=$ROOT_DIR'/'$DATASET_TYPE'/train/images/t0'

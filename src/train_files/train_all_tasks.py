@@ -1,5 +1,6 @@
 import os
 import argparse
+import yaml
 import random
 import math
 
@@ -14,9 +15,9 @@ import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 
 import wandb
-from train_files.models.resnet import ResNet, BasicBlock
+from model import CNNModel, ResNet, BasicBlock
 from utils import *
-from train_files.models.nesy import *
+from model_nesy import *
 
 METHODS = ['baseline_alltasks', 'baseline_inc_tasks']
 
@@ -37,7 +38,7 @@ def set_seed(seed=42):
 
 
 
-def run(model, train_loaders, val_loaders, test_loaders, test_loaders_global, wandb, args, device):
+def run(method, model, train_loaders, val_loaders, test_loaders, test_loaders_global, wandb, args, device):
 
     t_a_p, t_a_n, tt_acc = [], [], []
         
@@ -434,7 +435,7 @@ if __name__ == '__main__':
     print('Loading datasets...')
     train_loaders, val_loaders, test_loaders, test_loaders_global = get_dataset(args, args.method)
     
-    test_acc_p, test_acc_n, test_acc = run(model, train_loaders, val_loaders, test_loaders, test_loaders_global, wandb, args, device)
+    test_acc_p, test_acc_n, test_acc = run(args.method, model, train_loaders, val_loaders, test_loaders, test_loaders_global, wandb, args, device)
 
     if save_model:  
         results = args.results_dir

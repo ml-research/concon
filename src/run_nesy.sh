@@ -14,7 +14,7 @@ METHODS=('baseline_inc_tasks')
 
 ROOT_DIR=$4
 MODEL=$3
-DATASET_TYPE=$2 #('disjoint' or 'strict')
+DATASET_TYPE=$2
 SEED=$1
 
 

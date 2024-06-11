@@ -14,7 +14,7 @@ import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 
 import wandb
-from train_files.models.resnet import ResNet, BasicBlock
+from model import CNNModel, ResNet, BasicBlock
 from utils import *
 
 METHODS = ['baseline', 'ewc', 'buffer']

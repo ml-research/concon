@@ -1,9 +1,11 @@
 import os
 import argparse
+import yaml
 import random
 import math
 
 import numpy as np
+
 
 import torch
 torch.set_num_threads(10)
@@ -14,7 +16,7 @@ import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 
 import wandb
-from train_files.models.resnet import ResNet, BasicBlock
+from model import CNNModel, ResNet, BasicBlock
 from utils import *
 
 

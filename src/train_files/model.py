@@ -1,12 +1,32 @@
-from typing import Type
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torchvision.models as models
 from torch import Tensor
+from typing import Type
 
 
+class CNNModel(nn.Module):
+    def __init__(self):
+        super(CNNModel, self).__init__()
+        self.conv1 = nn.Conv2d(3, 32, 5)
+        self.conv2 = nn.Conv2d(32, 64, 5)
+        self.conv3 = nn.Conv2d(64, 128, 3)
+        self.conv4 = nn.Conv2d(128, 256, 5)
+        
+        self.fc1 = nn.Linear(256, 50)
+        
+        self.pool = nn.MaxPool2d(2, 2)
+        
+    def forward(self, x):
+        x = self.pool(F.relu(self.conv1(x)))
+        x = self.pool(F.relu(self.conv2(x)))
+        x = self.pool(F.relu(self.conv3(x)))
+        x = self.pool(F.relu(self.conv4(x)))
+        bs, _, _, _ = x.shape
+        x = F.adaptive_avg_pool2d(x, 1).reshape(bs, -1)
+        x = self.fc1(x)
+        return x
 
 class BasicBlock(nn.Module):
     def __init__(
@@ -148,5 +168,52 @@ class ResNet(nn.Module):
         x = self.avgpool(x)
         x = torch.flatten(x, 1)
         x = self.fc(x)
+        return x
+    
+
+def img_to_patch(x, patch_size, flatten_channels=True):
+    """
+    Args:
+        x: Tensor representing the image of shape [B, C, H, W]
+        patch_size: Number of pixels per dimension of the patches (integer)
+        flatten_channels: If True, the patches will be returned in a flattened format
+                           as a feature vector instead of a image grid.
+    """
+    B, C, H, W = x.shape
+    x = x.reshape(B, C, H // patch_size, patch_size, W // patch_size, patch_size)
+    x = x.permute(0, 2, 4, 1, 3, 5)  # [B, H', W', C, p_H, p_W]
+    x = x.flatten(1, 2)  # [B, H'*W', C, p_H, p_W]
+    if flatten_channels:
+        x = x.flatten(2, 4)  # [B, H'*W', C*p_H*p_W]
+    return x
+
+class AttentionBlock(nn.Module):
+    def __init__(self, embed_dim, hidden_dim, num_heads, dropout=0.0):
+        """Attention Block.
+
+        Args:
+            embed_dim: Dimensionality of input and attention feature vectors
+            hidden_dim: Dimensionality of hidden layer in feed-forward network
+                         (usually 2-4x larger than embed_dim)
+            num_heads: Number of heads to use in the Multi-Head Attention block
+            dropout: Amount of dropout to apply in the feed-forward network
+        """
+        super().__init__()
+
+        self.layer_norm_1 = nn.LayerNorm(embed_dim)
+        self.attn = nn.MultiheadAttention(embed_dim, num_heads)
+        self.layer_norm_2 = nn.LayerNorm(embed_dim)
+        self.linear = nn.Sequential(
+            nn.Linear(embed_dim, hidden_dim),
+            nn.GELU(),
+            nn.Dropout(dropout),
+            nn.Linear(hidden_dim, embed_dim),
+            nn.Dropout(dropout),
+        )
+
+    def forward(self, x):
+        inp_x = self.layer_norm_1(x)
+        x = x + self.attn(inp_x, inp_x, inp_x)[0]
+        x = x + self.linear(self.layer_norm_2(x))
         return x
     
