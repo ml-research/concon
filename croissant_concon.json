@@ -1,0 +1,1473 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "ConCon",
+  "description": " The ConCon dataset was created to evaluate confounding in a continual learning setting. It consists of a learning task which can be solved by applying a ground truth rule. There exists one unconfounded dataset where no confounder is present and the ground truth determines the class assignment. Additionally, there are two dataset variants, disjoint and strict, with three confounded tasks each. Each task consists of its own dataset. In a continual learning setting, a model is only trained on data from a single task at the same time, going over all tasks in sequential order. For disjoint, the confounding features are only present in their respective tasks. For strict, the confounding features are only informative in their respective tasks, i.e., they may only appear in one class of the confounded task but in any class of the other tasks.",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "citeAs": "@misc{busch_2024_10630482, author={Busch, Florian Peter and Kamath, Roshni and Mitchell, Rupert and Stammer, Wolfgang and Kersting, Kristian and Mundt, Martin}, title={ConCon: Continually Confounded Dataset}, month=feb, year=2024, publisher={Zenodo}, doi={10.5281/zenodo.10630482}, url={https://doi.org/10.5281/zenodo.10630482}}",
+  "datePublished": "2024-02-07 00:00:00",
+  "license": "https://opensource.org/license/BSD-2-Clause",
+  "url": "https://zenodo.org/records/10630482",
+  "version": "1.0.0",
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "disjoint",
+      "name": "disjoint",
+      "description": "Disjoint dataset",
+      "contentUrl": "https://zenodo.org/records/10630482/files/case_disjoint_main.zip",
+      "encodingFormat": "application/zip",
+      "sha256": "f58d6cd5cb8ea80e6a203a0af01f9162d094b367575a945ad0e9f603f70ff13b"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "strict",
+      "name": "strict",
+      "description": "Strict dataset",
+      "contentUrl": "https://zenodo.org/records/10630482/files/case_strict_main.zip",
+      "encodingFormat": "application/zip",
+      "sha256": "aae4ea262bc77c09b80803fe07b7b860b8b331e5f8370727fbd9af94d4edae4e"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "unconfounded",
+      "name": "unconfounded",
+      "description": "Unconfounded dataset",
+      "contentUrl": "https://zenodo.org/records/10630482/files/unconfounded.zip",
+      "encodingFormat": "application/zip",
+      "sha256": "511e2213368dbed941d0308ea71c7eced140ea1828fb583c9c9579ae91034248"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_train_t0_0",
+      "name": "disjoint_train_t0_0",
+      "description": "disjoint dataset, train split, Task t0, class 0",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/train/images/t0/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_train_t0_1",
+      "name": "disjoint_train_t0_1",
+      "description": "disjoint dataset, train split, Task t0, class 1",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/train/images/t0/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_train_t1_0",
+      "name": "disjoint_train_t1_0",
+      "description": "disjoint dataset, train split, Task t1, class 0",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/train/images/t1/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_train_t1_1",
+      "name": "disjoint_train_t1_1",
+      "description": "disjoint dataset, train split, Task t1, class 1",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/train/images/t1/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_train_t2_0",
+      "name": "disjoint_train_t2_0",
+      "description": "disjoint dataset, train split, Task t2, class 0",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/train/images/t2/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_train_t2_1",
+      "name": "disjoint_train_t2_1",
+      "description": "disjoint dataset, train split, Task t2, class 1",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/train/images/t2/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_val_t0_0",
+      "name": "disjoint_val_t0_0",
+      "description": "disjoint dataset, val split, Task t0, class 0",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/val/images/t0/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_val_t0_1",
+      "name": "disjoint_val_t0_1",
+      "description": "disjoint dataset, val split, Task t0, class 1",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/val/images/t0/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_val_t1_0",
+      "name": "disjoint_val_t1_0",
+      "description": "disjoint dataset, val split, Task t1, class 0",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/val/images/t1/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_val_t1_1",
+      "name": "disjoint_val_t1_1",
+      "description": "disjoint dataset, val split, Task t1, class 1",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/val/images/t1/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_val_t2_0",
+      "name": "disjoint_val_t2_0",
+      "description": "disjoint dataset, val split, Task t2, class 0",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/val/images/t2/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_val_t2_1",
+      "name": "disjoint_val_t2_1",
+      "description": "disjoint dataset, val split, Task t2, class 1",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/val/images/t2/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_test_t0_0",
+      "name": "disjoint_test_t0_0",
+      "description": "disjoint dataset, test split, Task t0, class 0",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/test/images/t0/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_test_t0_1",
+      "name": "disjoint_test_t0_1",
+      "description": "disjoint dataset, test split, Task t0, class 1",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/test/images/t0/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_test_t1_0",
+      "name": "disjoint_test_t1_0",
+      "description": "disjoint dataset, test split, Task t1, class 0",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/test/images/t1/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_test_t1_1",
+      "name": "disjoint_test_t1_1",
+      "description": "disjoint dataset, test split, Task t1, class 1",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/test/images/t1/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_test_t2_0",
+      "name": "disjoint_test_t2_0",
+      "description": "disjoint dataset, test split, Task t2, class 0",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/test/images/t2/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "disjoint_test_t2_1",
+      "name": "disjoint_test_t2_1",
+      "description": "disjoint dataset, test split, Task t2, class 1",
+      "containedIn": {
+        "@id": "disjoint"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_disjoint_main/test/images/t2/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_train_t0_0",
+      "name": "strict_train_t0_0",
+      "description": "strict dataset, train split, Task t0, class 0",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/train/images/t0/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_train_t0_1",
+      "name": "strict_train_t0_1",
+      "description": "strict dataset, train split, Task t0, class 1",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/train/images/t0/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_train_t1_0",
+      "name": "strict_train_t1_0",
+      "description": "strict dataset, train split, Task t1, class 0",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/train/images/t1/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_train_t1_1",
+      "name": "strict_train_t1_1",
+      "description": "strict dataset, train split, Task t1, class 1",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/train/images/t1/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_train_t2_0",
+      "name": "strict_train_t2_0",
+      "description": "strict dataset, train split, Task t2, class 0",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/train/images/t2/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_train_t2_1",
+      "name": "strict_train_t2_1",
+      "description": "strict dataset, train split, Task t2, class 1",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/train/images/t2/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_val_t0_0",
+      "name": "strict_val_t0_0",
+      "description": "strict dataset, val split, Task t0, class 0",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/val/images/t0/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_val_t0_1",
+      "name": "strict_val_t0_1",
+      "description": "strict dataset, val split, Task t0, class 1",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/val/images/t0/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_val_t1_0",
+      "name": "strict_val_t1_0",
+      "description": "strict dataset, val split, Task t1, class 0",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/val/images/t1/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_val_t1_1",
+      "name": "strict_val_t1_1",
+      "description": "strict dataset, val split, Task t1, class 1",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/val/images/t1/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_val_t2_0",
+      "name": "strict_val_t2_0",
+      "description": "strict dataset, val split, Task t2, class 0",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/val/images/t2/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_val_t2_1",
+      "name": "strict_val_t2_1",
+      "description": "strict dataset, val split, Task t2, class 1",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/val/images/t2/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_test_t0_0",
+      "name": "strict_test_t0_0",
+      "description": "strict dataset, test split, Task t0, class 0",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/test/images/t0/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_test_t0_1",
+      "name": "strict_test_t0_1",
+      "description": "strict dataset, test split, Task t0, class 1",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/test/images/t0/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_test_t1_0",
+      "name": "strict_test_t1_0",
+      "description": "strict dataset, test split, Task t1, class 0",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/test/images/t1/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_test_t1_1",
+      "name": "strict_test_t1_1",
+      "description": "strict dataset, test split, Task t1, class 1",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/test/images/t1/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_test_t2_0",
+      "name": "strict_test_t2_0",
+      "description": "strict dataset, test split, Task t2, class 0",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/test/images/t2/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "strict_test_t2_1",
+      "name": "strict_test_t2_1",
+      "description": "strict dataset, test split, Task t2, class 1",
+      "containedIn": {
+        "@id": "strict"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/test/images/t2/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "unconfounded_train_t0_0",
+      "name": "unconfounded_train_t0_0",
+      "description": "unconfounded dataset, train split, Task t0, class 0",
+      "containedIn": {
+        "@id": "unconfounded"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/train/images/t0/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "unconfounded_train_t0_1",
+      "name": "unconfounded_train_t0_1",
+      "description": "unconfounded dataset, train split, Task t0, class 1",
+      "containedIn": {
+        "@id": "unconfounded"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/train/images/t0/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "unconfounded_val_t0_0",
+      "name": "unconfounded_val_t0_0",
+      "description": "unconfounded dataset, val split, Task t0, class 0",
+      "containedIn": {
+        "@id": "unconfounded"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/val/images/t0/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "unconfounded_val_t0_1",
+      "name": "unconfounded_val_t0_1",
+      "description": "unconfounded dataset, val split, Task t0, class 1",
+      "containedIn": {
+        "@id": "unconfounded"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/val/images/t0/1/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "unconfounded_test_t0_0",
+      "name": "unconfounded_test_t0_0",
+      "description": "unconfounded dataset, test split, Task t0, class 0",
+      "containedIn": {
+        "@id": "unconfounded"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/test/images/t0/0/*.png"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "unconfounded_test_t0_1",
+      "name": "unconfounded_test_t0_1",
+      "description": "unconfounded dataset, test split, Task t0, class 1",
+      "containedIn": {
+        "@id": "unconfounded"
+      },
+      "encodingFormat": "image/png",
+      "includes": "case_strict_main/test/images/t0/1/*.png"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_train_t0_0",
+      "name": "image_disjoint_train_t0_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_train_t0_0/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, train split, Task t0, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_train_t0_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_train_t0_1",
+      "name": "image_disjoint_train_t0_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_train_t0_1/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, train split, Task t0, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_train_t0_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_train_t1_0",
+      "name": "image_disjoint_train_t1_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_train_t1_0/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, train split, Task t1, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_train_t1_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_train_t1_1",
+      "name": "image_disjoint_train_t1_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_train_t1_1/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, train split, Task t1, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_train_t1_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_train_t2_0",
+      "name": "image_disjoint_train_t2_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_train_t2_0/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, train split, Task t2, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_train_t2_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_train_t2_1",
+      "name": "image_disjoint_train_t2_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_train_t2_1/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, train split, Task t2, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_train_t2_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_val_t0_0",
+      "name": "image_disjoint_val_t0_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_val_t0_0/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, val split, Task t0, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_val_t0_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_val_t0_1",
+      "name": "image_disjoint_val_t0_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_val_t0_1/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, val split, Task t0, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_val_t0_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_val_t1_0",
+      "name": "image_disjoint_val_t1_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_val_t1_0/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, val split, Task t1, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_val_t1_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_val_t1_1",
+      "name": "image_disjoint_val_t1_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_val_t1_1/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, val split, Task t1, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_val_t1_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_val_t2_0",
+      "name": "image_disjoint_val_t2_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_val_t2_0/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, val split, Task t2, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_val_t2_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_val_t2_1",
+      "name": "image_disjoint_val_t2_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_val_t2_1/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, val split, Task t2, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_val_t2_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_test_t0_0",
+      "name": "image_disjoint_test_t0_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_test_t0_0/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, test split, Task t0, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_test_t0_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_test_t0_1",
+      "name": "image_disjoint_test_t0_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_test_t0_1/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, test split, Task t0, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_test_t0_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_test_t1_0",
+      "name": "image_disjoint_test_t1_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_test_t1_0/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, test split, Task t1, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_test_t1_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_test_t1_1",
+      "name": "image_disjoint_test_t1_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_test_t1_1/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, test split, Task t1, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_test_t1_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_test_t2_0",
+      "name": "image_disjoint_test_t2_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_test_t2_0/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, test split, Task t2, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_test_t2_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_disjoint_test_t2_1",
+      "name": "image_disjoint_test_t2_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_disjoint_test_t2_1/image",
+          "name": "image",
+          "description": "Image: disjoint dataset, test split, Task t2, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "disjoint_test_t2_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_train_t0_0",
+      "name": "image_strict_train_t0_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_train_t0_0/image",
+          "name": "image",
+          "description": "Image: strict dataset, train split, Task t0, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_train_t0_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_train_t0_1",
+      "name": "image_strict_train_t0_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_train_t0_1/image",
+          "name": "image",
+          "description": "Image: strict dataset, train split, Task t0, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_train_t0_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_train_t1_0",
+      "name": "image_strict_train_t1_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_train_t1_0/image",
+          "name": "image",
+          "description": "Image: strict dataset, train split, Task t1, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_train_t1_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_train_t1_1",
+      "name": "image_strict_train_t1_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_train_t1_1/image",
+          "name": "image",
+          "description": "Image: strict dataset, train split, Task t1, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_train_t1_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_train_t2_0",
+      "name": "image_strict_train_t2_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_train_t2_0/image",
+          "name": "image",
+          "description": "Image: strict dataset, train split, Task t2, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_train_t2_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_train_t2_1",
+      "name": "image_strict_train_t2_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_train_t2_1/image",
+          "name": "image",
+          "description": "Image: strict dataset, train split, Task t2, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_train_t2_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_val_t0_0",
+      "name": "image_strict_val_t0_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_val_t0_0/image",
+          "name": "image",
+          "description": "Image: strict dataset, val split, Task t0, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_val_t0_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_val_t0_1",
+      "name": "image_strict_val_t0_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_val_t0_1/image",
+          "name": "image",
+          "description": "Image: strict dataset, val split, Task t0, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_val_t0_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_val_t1_0",
+      "name": "image_strict_val_t1_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_val_t1_0/image",
+          "name": "image",
+          "description": "Image: strict dataset, val split, Task t1, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_val_t1_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_val_t1_1",
+      "name": "image_strict_val_t1_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_val_t1_1/image",
+          "name": "image",
+          "description": "Image: strict dataset, val split, Task t1, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_val_t1_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_val_t2_0",
+      "name": "image_strict_val_t2_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_val_t2_0/image",
+          "name": "image",
+          "description": "Image: strict dataset, val split, Task t2, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_val_t2_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_val_t2_1",
+      "name": "image_strict_val_t2_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_val_t2_1/image",
+          "name": "image",
+          "description": "Image: strict dataset, val split, Task t2, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_val_t2_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_test_t0_0",
+      "name": "image_strict_test_t0_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_test_t0_0/image",
+          "name": "image",
+          "description": "Image: strict dataset, test split, Task t0, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_test_t0_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_test_t0_1",
+      "name": "image_strict_test_t0_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_test_t0_1/image",
+          "name": "image",
+          "description": "Image: strict dataset, test split, Task t0, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_test_t0_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_test_t1_0",
+      "name": "image_strict_test_t1_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_test_t1_0/image",
+          "name": "image",
+          "description": "Image: strict dataset, test split, Task t1, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_test_t1_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_test_t1_1",
+      "name": "image_strict_test_t1_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_test_t1_1/image",
+          "name": "image",
+          "description": "Image: strict dataset, test split, Task t1, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_test_t1_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_test_t2_0",
+      "name": "image_strict_test_t2_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_test_t2_0/image",
+          "name": "image",
+          "description": "Image: strict dataset, test split, Task t2, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_test_t2_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_strict_test_t2_1",
+      "name": "image_strict_test_t2_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_strict_test_t2_1/image",
+          "name": "image",
+          "description": "Image: strict dataset, test split, Task t2, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "strict_test_t2_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_unconfounded_train_t0_0",
+      "name": "image_unconfounded_train_t0_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_unconfounded_train_t0_0/image",
+          "name": "image",
+          "description": "Image: unconfounded dataset, train split, Task t0, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "unconfounded_train_t0_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_unconfounded_train_t0_1",
+      "name": "image_unconfounded_train_t0_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_unconfounded_train_t0_1/image",
+          "name": "image",
+          "description": "Image: unconfounded dataset, train split, Task t0, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "unconfounded_train_t0_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_unconfounded_val_t0_0",
+      "name": "image_unconfounded_val_t0_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_unconfounded_val_t0_0/image",
+          "name": "image",
+          "description": "Image: unconfounded dataset, val split, Task t0, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "unconfounded_val_t0_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_unconfounded_val_t0_1",
+      "name": "image_unconfounded_val_t0_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_unconfounded_val_t0_1/image",
+          "name": "image",
+          "description": "Image: unconfounded dataset, val split, Task t0, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "unconfounded_val_t0_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_unconfounded_test_t0_0",
+      "name": "image_unconfounded_test_t0_0",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_unconfounded_test_t0_0/image",
+          "name": "image",
+          "description": "Image: unconfounded dataset, test split, Task t0, class 0",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "unconfounded_test_t0_0"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "image_unconfounded_test_t0_1",
+      "name": "image_unconfounded_test_t0_1",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "image_unconfounded_test_t0_1/image",
+          "name": "image",
+          "description": "Image: unconfounded dataset, test split, Task t0, class 1",
+          "dataType": "sc:ImageObject",
+          "source": {
+            "fileSet": {
+              "@id": "unconfounded_test_t0_1"
+            },
+            "extract": {
+              "fileProperty": "content"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
